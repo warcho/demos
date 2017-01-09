@@ -1,0 +1,88 @@
+---
+title: "Colombia Health Loss"
+output: html_document
+---
+
+In this exercise, we'll compare how different **metrics of disease burden** tell different stories about the health of a country. In particular, we'll be using data from the Colombia (see `README.md` for more information). 
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE}
+# Set up 
+library(dplyr)
+library(knitr)
+setwd('~/Documents/info-498c/demos/gbd/dalys')
+
+
+# Load data
+colombia.data <- read.csv('data/prepped/overview.csv')
+
+```
+
+## Deaths
+We'll begin with a simple metric of disease burden, _number of deaths_. Using that metric, here are the 10 diseases that cause the most health loss in Colombia:
+
+```{r, echo=FALSE}
+# Begin by calculating two new columns:
+# - burden.rank: rank *within metric* for each disease
+# - percent: a rounded percentage of the "Value" column
+ranked.data <- colombia.data %>% 
+                  group_by(metric) %>% 
+                  mutate(burden.rank = rank(desc(Value)),
+                       percent = paste0(round(Value * 100, 1), '%')
+                       ) %>% 
+                  ungroup()
+                  
+# Create a summary table of the top 10 burdensome diseases as measured by deaths
+
+
+# Use the `kable` function to show the table you've created
+
+```
+
+## YLLs
+As a more nuanced metric, we'll consider _Years of Life Lost_. This measure incorporates the age at death to apply a higher burden to diseases that affect younger people. Below is a bar chart of the top 10 diseases as measured by **YLLs**. 
+
+```{r, echo=FALSE}
+# Set margin spacing for graphics
+par(mar=c(5,10,4,2))
+
+
+
+# Filter down to top YLLs
+
+
+
+# Create a barplot of the top 10 burdensome diseases as measured by YLLs
+
+
+
+
+```
+
+## YLDs
+We can perform a similar analysis of Years Lived with Disability (YLDs).
+
+```{r, echo=FALSE}
+# Create a summary table of the top 10 burdensome diseases as measured by YLDs
+
+
+
+# Use the `kable` function to show the table you've created
+
+
+```
+
+## DALYs
+Finally, we can see this breakdown for DALYs:
+
+```{r, echo=FALSE}
+# Create a summary table of the top 10 burdensome diseases as measured by DALYs
+
+# Use the `kable` function to show the table you've created
+
+
+```
+
+
+```{r, echo=FALSE}
+# Bonus: Create an arrow diagram (http://ihmeuw.org/3zn7) comparing deaths to YLLs
+```

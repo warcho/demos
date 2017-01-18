@@ -10,5 +10,6 @@ Additional data downloaded from:
 In this exercise, you should answer the following questions using the data provided (it may be helpful to use the `-wide` data in some instances). Before you begin, consider **how to assess compression/expansion** given life expectancy and hale data.
 
 - Are HALE and life expectancy correlated (visually, statistically)?
+	> HALE and life expectancy have a direct relationship where one increases proportionally with the other.
 - As life expectancy increases, at what rate does hale increase?
 - 

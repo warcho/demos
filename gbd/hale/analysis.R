@@ -1,5 +1,9 @@
 # Analysis: is there more expansion or compression?
 
+#################################
+# There is a bit of compression #
+#################################
+
 # Set up
 library(tidyr)
 library(dplyr)
@@ -14,6 +18,7 @@ cor(hale.data$le, hale.data$hale)
 plot(hale.data$le, hale.data$hale)
 
 # As life expectancy increases, at what rate does hale increase?
+# As life expectancy increases, HALE seeminly increases directly proportionally.
 
 # Compute change in life expectancy, change in hale
 wide.data <- wide.data %>% 
@@ -22,6 +27,9 @@ wide.data <- wide.data %>%
 # Assess relationship between change
 plot(wide.data$le.change, wide.data$hale.change)
 lm(hale.change ~ le.change, data=wide.data)
+
+# y = 1.1079x + 0.1557
+# HALE change is slightly greater than the LE change
 
 # What is the distribution in the ratios of le to hale?
 hist(wide.data$le.change / wide.data$hale.change)

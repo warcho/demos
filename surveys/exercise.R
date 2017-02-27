@@ -7,10 +7,10 @@ library(ggplot2)
 data(api)
 
 # How many schools are in the full dataset?
-
+nrow(apipop)
 
 # How many districts are there in the dataset (dnum)?
-
+dist <- unique(apipop$dnum)
 
 
 
@@ -21,16 +21,16 @@ data(api)
 
 
 # Use the `table` function to see how many schools are selected by school type (stype)
-
+table(apistrat$stype)
 
 # How does this compare the to breakdown of the fractions of school type in the full dataset?
-
+table(apipop$stype)
 
 # Given that we sample by strata, what are the *probability weights* for each observation?
-
+prob.wt <- table(apipop$stype)/table(apistrat$stype)
 
 # What is the sum of probability weights column in the dataset?
-
+sum(apistrat$pw)
 
 # Use the `table` function to see how probability weight varies by stype
 
